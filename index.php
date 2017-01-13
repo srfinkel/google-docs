@@ -89,7 +89,7 @@
 				CollabProfileID (foreign key)
 			</li>
 			<li>
-				CollabDate
+				CollabDate (foreign key)
 			</li>
 		</ul>
 

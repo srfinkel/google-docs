@@ -6,58 +6,98 @@
 		<link href="styles.css" rel="stylesheet">
 	</head>
 	<body>
-		
 		<h1>
 			Persona
 		</h1>
-			<p>
-				Molly is 60-years-old with a long track record of being an artist-educator. She is mid-level tech savvy and uses technology in her everyday life although is not a "techie" person. She uses a 2011 MacbookPro laptop and an iPhone 6. She uses google docs becuase she works with other artists/professionals across the country developing projects and needs a tool to track meeting notes, to do lists, etc. She uses google docs because it is simple and integrates well with her e-mail and her teammates' emails.
-			</p>
+		<p>
+			Molly is 60-years-old with a long track record of being an artist-educator. She is somewhat tech savvy, meaning
+			she
+			uses technology in her everyday life although is not a "techie" person. She uses a 2012 MacbookPro laptop
+			running El Capitan and an iPhone 6. She uses google docs becuase she collaborates with other professionals
+			across the country developing projects and needs a tool to track meeting notes, to do lists, etc. She uses
+			google docs because it is simple and integrates well with her e-mail and her collaborators' emails.
+		</p>
 
 		<h1>
 			Use Case
 		</h1>
-			<p>
-				Molly has regular Director's Meetings every two weeks. The Project Administrator is in charge of developing the agenda in google docs and sharing the draft agenda prior to the meeting. Molly is responsible for reviewing the draft agenda and adding items based on their priority. She adds comments and links to the draft agenda and then reshares the new agenda with other teammates on the call.
-			</p>
+		<p>
+			Molly has regular Director's Meetings every two weeks. The Project Administrator is in charge of developing a
+			draft agenda in google docs and sharing it with Molly prior to the meeting. Molly is responsible for reviewing the
+			draft agenda and adding items based on their priority. She edits the draft agenda and then reshares the new agenda with
+			other collaborators for the meeting.
+		</p>
 
 		<h1>
 			Interaction Flow
 		</h1>
 		<ol>
-			<li>
+			<li class="client">
 				Molly logs into her e-mail.
 			</li>
 			<li>
-				Molly opens Google Drive to access the google doc under her user account.
+				Google opens Molly's account with access to her Google Drive.
+			</li>
+			<li class="client">
+				Molly opens draft agenda from her Google Drive.
 			</li>
 			<li>
-				Molly opens draft agenda from the recent documents list.
+				Google opens the plain text document for Molly.
 			</li>
-			<li>
-				Molly adds some comments to the document.
+			<li class="client">
+				Molly edits parts of the agenda.
 			</li>
 			<li>
 				Google drive automatically saves the changes.
 			</li>
-			<li>
-				Molly copies the link to the google doc and sends the link to her teammates with an e-mail stating that she has made changes to the document.
+			<li class="client">
+				Molly resends the updated google doc to her collaborators.
 			</li>
 		</ol>
 
 		<h1>
 			Conceptual Model
 		</h1>
+		<h2>Entities & Attributes</h2>
+		<h3>Profile</h3>
 		<ul>
 			<li>
-				One user can access a google doc on their own.
+				profileID (primary key)
 			</li>
 			<li>
-				Multiple users can access a google doc at the same time.
+				profileEmail
+			</li>
+		</ul>
+		<h3>Document</h3>
+		<ul>
+			<li>
+				documentId (primary key)
 			</li>
 			<li>
-				Google doc is able to automatically update changes to all users.
+				documentProfileId (foreign key)
 			</li>
+			<li>
+				documentDate
+			</li>
+			<li>
+				documentContent
+			</li>
+		</ul>
+		<h3>Collaborators</h3>
+		<ul>
+			<li>
+				CollabProfileID (foreign key)
+			</li>
+			<li>
+				CollabDate
+			</li>
+		</ul>
+
+		<h2>Relations</h2>
+		<ul>
+			<li>One <strong>Profile</strong> can make many <strong>Documents - <em>(1 to n)</em></strong></li>
+			<li>Many <strong>Collaborators</strong> can make many <strong>Documents - <em>(m to n)</em></strong></li>
+			<li>Many <strong>Documents</strong> can have many <strong>Collaborators - <em>(m to n)</em></strong></li>
 		</ul>
 	</body>
 </html>

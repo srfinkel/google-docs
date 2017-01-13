@@ -1,3 +1,13 @@
-background {
-	color:lightpink;
+body {
+	background-color: #bdbdbd;
+	font-family:Arial;
+}
+.client {
+	color:indianred;
+}
+h2 {
+	color:white;
+}
+h3 {
+	color:indianred;
 }

@@ -68,10 +68,10 @@
 				profileEmail
 			</li>
 			<li>
-				profileFooHash
+				profileHash
 			</li>
 			<li>
-				profileFooSalt
+				profileSalt
 			</li>
 		</ul>
 		<h3>Document</h3>

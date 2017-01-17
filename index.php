@@ -62,7 +62,7 @@
 		<h3>Profile</h3>
 		<ul>
 			<li>
-				profileID (primary key)
+				profileId (primary key)
 			</li>
 			<li>
 				profileEmail
@@ -86,18 +86,17 @@
 		<h3>Collaborators</h3>
 		<ul>
 			<li>
-				CollabProfileID (foreign key)
+				collaboratorProfileId (foreign key)
 			</li>
 			<li>
-				CollabDate (foreign key)
+				collaboratorDocumentId (foreign key)
 			</li>
 		</ul>
 
 		<h2>Relations</h2>
 		<ul>
-			<li>One <strong>Profile</strong> can make many <strong>Documents - <em>(1 to n)</em></strong></li>
 			<li>Many <strong>Collaborators</strong> can make many <strong>Documents - <em>(m to n)</em></strong></li>
-			<li>Many <strong>Documents</strong> can have many <strong>Collaborators - <em>(m to n)</em></strong></li>
 		</ul>
+		<img src="images/google-docs-ERD.svg">
 	</body>
 </html>

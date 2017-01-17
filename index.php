@@ -67,6 +67,12 @@
 			<li>
 				profileEmail
 			</li>
+			<li>
+				profileFooHash
+			</li>
+			<li>
+				profileFooSalt
+			</li>
 		</ul>
 		<h3>Document</h3>
 		<ul>
@@ -81,6 +87,9 @@
 			</li>
 			<li>
 				documentContent
+			</li>
+			<li>
+				documentTime
 			</li>
 		</ul>
 		<h3>Collaborators</h3>

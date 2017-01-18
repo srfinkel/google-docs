@@ -1,8 +1,8 @@
 CREATE TABLE profile (
 	profileId      INT UNSIGNED AUTO_INCREMENT NOT NULL,
 	profileEmail   VARCHAR(128)                NOT NULL,
-	profileFooHash CHAR(128)                   NOT NULL,
-	profileFooSalt CHAR(64)                    NOT NULL,
+	profileHash CHAR(128)                   NOT NULL,
+	profileSalt CHAR(64)                    NOT NULL,
 	UNIQUE(profileEmail),
 	PRIMARY KEY(profileId)
 );

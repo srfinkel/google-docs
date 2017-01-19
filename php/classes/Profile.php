@@ -29,5 +29,39 @@ class Profile {
 	 * @var string $profileSalt
 	 **/
 	private $profileSalt;
+	/**
+	 * accessor method for profile id
+	 *
+	 * @return int|null value of profile id
+	**/
+	public function getProfileId() {
+		return ($this->profileId);
+	}
+	/**
+	 * mutator method for profile id
+	 *
+	 * @param int|null $newProfileId new value of profile id
+	 * @throws \RangeException if $newProfileId is not positive
+	 * @throws \TypeError if $newProfileId is not an integer
+	 **/
+	public function setProfileId(int $newProfileId = null) {
+		// if the profile id is null, this is a new profile without a mySQL assigned id (yet)
+		if($newProfileId === null) {
+			$this->profileId = null;
+			return;
+		}
+		//verify the profile id is positive
+		if($newProfileId <= 0) {
+			throw (new \RangeException("profile id is not positive"));
+		}
+		//convert and store the profile id
+		$this->profileId = $newProfileId;
+	}
+	/**
+	 * accessor method for profile email
+	 *
+	 * @return string value of profile email
+	 **/
+
 }
 ?>

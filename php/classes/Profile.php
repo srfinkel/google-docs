@@ -62,6 +62,23 @@ class Profile {
 	 *
 	 * @return string value of profile email
 	 **/
-
+	public function getProfileEmail() {
+		return($this->profileEmail);
+	}
+	/**
+	 * mutator method for profile email
+	 *
+	 * @param string $newProfileEmail new value of profile email
+	 * @throws \InvalidArgumentException if $newProfileEmail is not a string
+	 **/
+	public function setProfileEmail(string $newProfileEmail) {
+		//verify the profile email is secure
+		$newProfileEmail = filter_var($newProfileEmail, FILTER_SANITIZE_EMAIL);
+		if(empty($newProfileEmail) === true) {
+			throw(new \InvalidArgumentException("email is empty or insecure"));
+		}
+		// store the profile email
+		$this->profileEmail = $newProfileEmail;
+	}
 }
 ?>

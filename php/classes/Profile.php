@@ -74,12 +74,16 @@ class Profile {
 	 *
 	 * @param string $newProfileEmail new value of profile email
 	 * @throws \InvalidArgumentException if $newProfileEmail is not a string
-	 **/
+	 * @throws \RangeException if profile email is too long
+	**/
 	public function setProfileEmail(string $newProfileEmail) {
 		// verify the profile email is secure
 		$newProfileEmail = filter_var($newProfileEmail, FILTER_SANITIZE_EMAIL);
 		if(empty($newProfileEmail) === true) {
 			throw(new \InvalidArgumentException("email is empty or insecure"));
+		}
+		if(strlen($newProfileEmail) > 128) {
+			throw(new \RangeException("email is too long"));
 		}
 		// store the profile email
 		$this->profileEmail = $newProfileEmail;

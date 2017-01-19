@@ -103,14 +103,42 @@ class Profile {
 		// verify the profile hash is valid
 		$newProfileHash = trim($newProfileHash);
 		$newProfileHash = strtolower($newProfileHash);
-		if(ctype_digit($newProfileHash) === false) {
+		if(ctype_xdigit($newProfileHash) === false) {
 			throw (new \InvalidArgumentException("hash has empty or invalid contents"));
 		}
 		if(strlen($newProfileHash) !== 128) {
 			throw(new \RangeException("hash length" . strlen($newProfileHash) . "is incorrect length"));
 		}
-		//store the profile hash
+		// store the profile hash
 		$this->profileHash = $newProfileHash;
 	}
-}
-?>
+		/**
+		 * accessor method for profile salt
+		 *
+		 * @return string value of profile salt
+		 **/
+		public
+		function getProfileSalt() {
+			return ($this->profileSalt);
+		}
+		/**
+		 * mutator method for profile salt
+		 *
+		 *@param string $newProfileSalt new value of profile salt
+		 *@throws \InvalidArgumentException if $newProfileSalt is empty or not a valid string
+		 *@throws \RangeException is $newProfileSalt is > 64 characters
+		 **/
+		public function setProfileSalt(string $newProfileSalt) {
+			// verify the profile salt id valid
+			$newProfileSalt = trim($newProfileSalt);
+			$newProfileSalt = strtolower($newProfileSalt);
+			if(ctype_xdigit($newProfileSalt) === false) {
+				throw (new \InvalidArgumentException("salt us empty or has invalid contents"));
+			}
+			if(strlen($newProfileSalt) !== 64) {
+				throw(new \RangeException("salt length" . strlen($newProfileSalt) . "is incorrect length"));
+			}
+			// store the profile salt
+			$this->profileSalt = $newProfileSalt;
+		}
+	}

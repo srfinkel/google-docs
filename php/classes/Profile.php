@@ -1,4 +1,5 @@
 <?php
+
 /**
 * The profile of a Google document creator.
 *
@@ -7,7 +8,7 @@
 * @author Sarah Ruth Finkel <srfinkel@gmail.com>
 * @version 3.0.0
 **/
-class Profile implements \JsonSerializable {
+class Profile {
 	/**
 	* id for this Profile; this is the primary key
 	* @var int $profileId
@@ -15,6 +16,18 @@ class Profile implements \JsonSerializable {
 	private $profileId;
 	/**
 	* email connected to this Profile. This email should be unique
-	* @var string
-
+	* @var string $profileEmail;
+	**/
+	private $profileEmail;
+	/**
+	 * hash connected to this profile for the password
+	 * @var string $profileHash
+	 **/
+	private $profileHash;
+	/**
+	 * salt connected to this profile for the password
+	 * @var string $profileSalt
+	 **/
+	private $profileSalt;
 }
+?>

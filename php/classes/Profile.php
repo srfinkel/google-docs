@@ -10,14 +10,14 @@
 **/
 class Profile {
 	/**
-	* id for this Profile; this is the primary key
-	* @var int $profileId
-	**/
+	 * id for this Profile; this is the primary key
+	 * @var int $profileId
+	 **/
 	private $profileId;
 	/**
-	* email connected to this Profile. This email should be unique
-	* @var string $profileEmail;
-	**/
+	 * email connected to this Profile. This email should be unique
+	 * @var string $profileEmail ;
+	 **/
 	private $profileEmail;
 	/**
 	 * hash connected to this profile for the password
@@ -29,14 +29,16 @@ class Profile {
 	 * @var string $profileSalt
 	 **/
 	private $profileSalt;
+
 	/**
 	 * accessor method for profile id
 	 *
 	 * @return int|null value of profile id
-	**/
+	 **/
 	public function getProfileId() {
 		return ($this->profileId);
 	}
+
 	/**
 	 * mutator method for profile id
 	 *
@@ -50,21 +52,23 @@ class Profile {
 			$this->profileId = null;
 			return;
 		}
-		//verify the profile id is positive
+		// verify the profile id is positive
 		if($newProfileId <= 0) {
 			throw (new \RangeException("profile id is not positive"));
 		}
-		//convert and store the profile id
+		// convert and store the profile id
 		$this->profileId = $newProfileId;
 	}
+
 	/**
 	 * accessor method for profile email
 	 *
 	 * @return string value of profile email
 	 **/
 	public function getProfileEmail() {
-		return($this->profileEmail);
+		return ($this->profileEmail);
 	}
+
 	/**
 	 * mutator method for profile email
 	 *
@@ -72,13 +76,41 @@ class Profile {
 	 * @throws \InvalidArgumentException if $newProfileEmail is not a string
 	 **/
 	public function setProfileEmail(string $newProfileEmail) {
-		//verify the profile email is secure
+		// verify the profile email is secure
 		$newProfileEmail = filter_var($newProfileEmail, FILTER_SANITIZE_EMAIL);
 		if(empty($newProfileEmail) === true) {
 			throw(new \InvalidArgumentException("email is empty or insecure"));
 		}
 		// store the profile email
 		$this->profileEmail = $newProfileEmail;
+	}
+	/**
+	 * accessor method for profile hash
+	 *
+	 * @return string value of profile hash
+	 **/
+	public function getProfileHash() {
+		return($this->profileHash);
+	}
+	/**
+	 * mutator method for profile hash
+	 *
+	 * @param string $newProfileHash new value of profile hash
+	 * @throws \InvalidArgumentException if $newProfileHash is empty or not a valid string
+	 * @throws \RangeException if $newProfileHash is > 128 characters
+	 **/
+	public function setProfileHash(string $newProfileHash) {
+		// verify the profile hash is valid
+		$newProfileHash = trim($newProfileHash);
+		$newProfileHash = strtolower($newProfileHash);
+		if(ctype_digit($newProfileHash) === false) {
+			throw (new \InvalidArgumentException("hash has empty or invalid contents"));
+		}
+		if(strlen($newProfileHash) !== 128) {
+			throw(new \RangeException("hash length" . strlen($newProfileHash) . "is incorrect length"));
+		}
+		//store the profile hash
+		$this->profileHash = $newProfileHash;
 	}
 }
 ?>

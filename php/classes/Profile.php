@@ -1,3 +1,4 @@
+<?php
 /**
 * The profile of a Google document creator.
 *

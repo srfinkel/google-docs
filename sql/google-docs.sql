@@ -1,3 +1,7 @@
+DROP TABLE IF EXISTS collaborators;
+DROP TABLE IF EXISTS document;
+DROP TABLE IF EXISTS profile;
+
 CREATE TABLE profile (
 	profileId      INT UNSIGNED AUTO_INCREMENT NOT NULL,
 	profileEmail   VARCHAR(128)                NOT NULL,

@@ -258,7 +258,9 @@ $invalidArgument->getMessage(), 0, $invalidArgument));
 	 **/
 	public function jsonSerialize() {
 			$fields = get_object_vars($this);
+			unset($fields["profileHash , profileSalt"]);
 			return($fields);
+
 		// TODO: Implement jsonSerialize() method.
 	}
 }
